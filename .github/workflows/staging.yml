@@ -1,13 +1,12 @@
 name: Deploy to staging
-
 on: 
   push:
     branches:
-      - develop
+      # - develop
       - staging
-    tags:
-      - staging
-      - '*-rc*'
+    # tags:
+    #   - staging
+    #   - '*-rc*'
 jobs:
   build:
     uses: ./.github/workflows/build.yml 
@@ -16,7 +15,7 @@ jobs:
     needs: build
     strategy:
       matrix:
-        workload: [ckb-explorer-api, ckb-explorer-syncer, ckb-explorer-worker]
+        workload: [kuboard-cicd-test01, kuboard-cicd-test02, kuboard-cicd-test03]
     uses: ./.github/workflows/update-image.yml 
     with:
       k8s-namespace: staging
