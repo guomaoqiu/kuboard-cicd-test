@@ -17,9 +17,6 @@ jobs:
       matrix:
         workload: [kuboard-cicd-test01, kuboard-cicd-test02, kuboard-cicd-test03]
     uses: ./.github/workflows/update-image.yml 
-    steps:
-      - name: Print image name
-        run: echo ${{ outputs.image }}
     with:
       k8s-namespace: staging
       k8s-workload: ${{ matrix.workload }}
