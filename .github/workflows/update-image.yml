@@ -35,6 +35,7 @@ jobs:
         run: |
             echo "Response status code: ${{ steps.http-request.outputs.status_code }}"
             echo "Response body: ${{ steps.http-request.outputs.body }}"
+            
       # - name: Restart container
       #   uses: fjogeleit/http-request-action@v1
       #   with:
