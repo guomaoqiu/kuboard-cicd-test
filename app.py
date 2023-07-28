@@ -1,8 +1,7 @@
 # CKB Node
 # Mainnet: https://public-service-status-checker-magickbase.vercel.app/api/ckb/node/mainnet
 # Testnet: https://public-service-status-checker-magickbase.vercel.app/api/ckb/node/testnet
-# CKB Explorer
-
+# CKB Explor
 # Mainnet: https://public-service-status-checker-magickbase.vercel.app/api/ckb/explorer/mainnet
 # Testnet: https://public-service-status-checker-magickbase.vercel.app/api/ckb/explorer/testnet
 # Godwoken Explorer
