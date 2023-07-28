@@ -28,12 +28,14 @@ jobs:
         id: http-request
         uses: fjogeleit/http-request-action@v1
         with:
-          url: ${{ secrets.KUBOARD_API_URL }}/cluster/ckb/kind/CICDApi/ops/resource/updateImageTag
+          url: https://kuboard.layerview.io/kuboard-api/cluster/ckb/kind/CICDApi/ops/resource/updateImageTag
           method: 'PUT'
           customHeaders: '{"Content-Type": "application/json", "Cookie": "KuboardUsername=${{ secrets.KUBOARD_USERNAME }}; KuboardAccessKey=${{ secrets.KUBOARD_ACCESS_KEY }}"}'
           data: '{"kind":"deployments","namespace":"${{ inputs.k8s-namespace }}","name":"${{ inputs.k8s-workload }}","images":{"${{ inputs.k8s-workload }}":"${{ inputs.image }}"}}'
       - name: Display Response
         run: |
+            echo "Response response: ${{ steps.http-request.outputs.response }}"
+            echo "Response headers: ${{ steps.http-request.outputs.headers }}"
             echo "Response status code: ${{ steps.http-request.outputs.status_code }}"
             echo "Response body: ${{ steps.http-request.outputs.body }}"
       # - name: Restart container
