@@ -30,3 +30,5 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Print image name
+        run: echo ${{ inputs.image }} && echo ${{inputs}}
