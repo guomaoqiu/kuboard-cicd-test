@@ -21,8 +21,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
+      - name: Print image name
+        run: echo ${{ inputs.image }} && echo ${{inputs}}
       - name: Update image on K8S
         uses: fjogeleit/http-request-action@v1
         with:
