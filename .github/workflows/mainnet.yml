@@ -1,0 +1,21 @@
+name: Deploy to mainnet
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+  deploy-update:
+    needs: build
+    strategy:
+      matrix:
+        workload: [ckb-explorer-api, ckb-explorer-poolsyncer, ckb-explorer-scheduler, ckb-explorer-blocksyncer]
+    uses: ./.github/workflows/update-image.yml
+    with:
+      k8s-namespace: mainnet
+      k8s-workload: ${{ matrix.workload }}
+      image: ${{ needs.build.outputs.image }}
+    secrets: inherit

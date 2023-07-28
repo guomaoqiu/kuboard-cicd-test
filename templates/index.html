@@ -1,0 +1,80 @@
+
+
+<style>
+	.iframes-container {
+	  display: flex;
+	  flex-wrap: nowrap;
+	  overflow-x: auto;
+	}
+	.iframe-container {
+	  flex-grow: 1;
+	  margin-right: 20px;
+	  min-width: 300px;
+	}
+	h2 {
+	  text-align: center;
+	  font-size: 1.0rem;
+	}
+	li {
+		font-size: 20px;
+	}
+	</style>
+
+	<div class="iframes-container">
+	  <div class="iframe-container">
+			<h2><a href="https://explorer.nervos.org/" target="_blank">CKB Explorer Mainnet</a></h2>
+			<iframe src="https://explorer.nervos.org/" height="850px"></iframe>
+	  </div>
+	  <div class="iframe-container">
+			<h2><a href="https://pudge.explorer.nervos.org" target="_blank">CKB Explorer Testnet</a></h2>
+			<iframe src="https://pudge.explorer.nervos.org" height="850px"></iframe>
+	  </div>
+	  <div class="iframe-container">
+			<h2><a href="https://ckb-explorer-git-remove-staging-ci-magickbase.vercel.app/" target="_blank">CKB Explorer Staging</a></h2>
+			<iframe src="https://ckb-explorer-git-remove-staging-ci-magickbase.vercel.app/" height="850px"></iframe>
+	  </div>
+	  <div class="iframe-container">
+			<h2><a href="https://v1.gwscan.com/zh-CN" target="_blank">Godwoken Mainnet</a></h2>
+			<iframe src="https://v1.gwscan.com/zh-CN" height="850px"></iframe>
+	  </div>
+	  <div class="iframe-container">
+			<h2><a href="https://v1.testnet.gwscan.com/zh-CN" target="_blank">Godwoken Testnet</a></h2>
+			<iframe src="https://v1.testnet.gwscan.com/zh-CN" height="850px"></iframe>
+	  </div>
+	  <div class="iframe-container">
+			<h2><a href="https://faucet.nervos.org/" target="_blank">CKB Faucet</a></h2>
+			<iframe src="https://faucet.nervos.org/" height="850px"></iframe>
+	  </div>
+	  <!-- Add more iframe-container divs for additional iframes -->
+	</div>
+
+			<div id="api">
+			</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		// 定时刷新页面
+		setInterval(function() {
+			// 发送 AJAX 请求
+			$.ajax({
+				url: '/api',
+				success: function(data) {
+					// 将字典列表转换为列表
+					var listStr = "<ul>";
+					// 遍历字典列表，生成列表项
+					$.each(data, function(index, dict) {
+						var text = Object.keys(dict)[0] + ' ' + dict[Object.keys(dict)[0]];
+						listStr += "<li>" + text + "</li>";
+					});
+					listStr += "</ul>";
+					// 更新页面内容
+					$('#api').html(listStr);
+				}
+			});
+		}, 1500); // 每隔 5 秒刷新一次页面
+	});
+</script>
+</head>
+<body>
+<div id="api"></div>
+</body>
