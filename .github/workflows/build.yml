@@ -27,6 +27,6 @@ jobs:
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
           image: kuboard-cicd-test
-          registry: ghcr.io
+          registry: dockerhub.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
