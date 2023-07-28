@@ -25,6 +25,7 @@ jobs:
       - name: Print image name
         run: echo ${{ inputs.image }}
       - name: Update image on K8S
+        id: http-request
         uses: fjogeleit/http-request-action@v1
         with:
           url: ${{ secrets.KUBOARD_API_URL }}/cluster/ckb/kind/CICDApi/ops/resource/updateImageTag
@@ -35,7 +36,7 @@ jobs:
         run: |
             echo "Response status code: ${{ steps.http-request.outputs.status_code }}"
             echo "Response body: ${{ steps.http-request.outputs.body }}"
-            
+
       # - name: Restart container
       #   uses: fjogeleit/http-request-action@v1
       #   with:
