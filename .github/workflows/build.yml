@@ -10,11 +10,11 @@ on:
       #  镜像名称
       image-name:
         description: URL for docker image 
-        value: ${{ jobs.build.outputs.image_name }}
+        value: ${{ jobs.build.outputs.image-name }}
       #  镜像tag(版本)
       image-tag:
         description: image tag(version)
-        value: ${{ jobs.build.outputs.image_tag }}
+        value: ${{ jobs.build.outputs.image-tag }}
 jobs:        
   build:
     runs-on: ubuntu-latest
