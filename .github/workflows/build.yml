@@ -7,14 +7,20 @@ on:
       DOCKERHUB_PASSWORD:
         required: true
     outputs:
-      image:
-        description: URL for docker image with tag
-        value: ${{ jobs.build.outputs.image }}
+      #  镜像名称
+      image_name:
+        description: URL for docker image 
+        value: ${{ jobs.build.outputs.image_name }}
+      #  镜像tag(版本)
+      image_tag:
+        description: image tag(version)
+        value: ${{ jobs.build.outputs.image_tag }}
 jobs:        
   build:
     runs-on: ubuntu-latest
     outputs:
-      image: '${{ steps.docker_build.outputs.imageFullName }}:${{ steps.docker_build.outputs.tags }}'
+      image_name: '${{ steps.docker_build.outputs.imageFullName }}'
+      image_tag: '${{ steps.docker_build.outputs.tags }}'
     steps:
       - uses: actions/checkout@v3
         with:
