@@ -28,7 +28,8 @@ jobs:
         with:
           image: guomaoqiu/kuboard-cicd-test
           registry: docker.io
+          addTimestamp: true
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Print image name
-        run: echo ${{ steps.docker_build.outputs.tags }}
+        run: echo ${{ outputs.image }}

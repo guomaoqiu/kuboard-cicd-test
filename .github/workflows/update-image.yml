@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print image name
-        run: echo ${{ inputs.image }} && echo ${{inputs}}
+        run: echo ${{ inputs.image }}
       - name: Update image on K8S
         uses: fjogeleit/http-request-action@v1
         with:
