@@ -10,6 +10,9 @@ jobs:
     secrets: inherit
   deploy-update:
     needs: build
+    steps:
+      - name: Print image
+        run: echo ${{ needs.build.outputs.image }}
     strategy:
       matrix:
         workload: [ckb-explorer-api, ckb-explorer-syncer, ckb-explorer-worker]
