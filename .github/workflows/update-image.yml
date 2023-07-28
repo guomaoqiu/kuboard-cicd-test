@@ -2,10 +2,10 @@ name: Update K8S workload image
 on: 
   workflow_call:
     inputs:
-      image_name: 
+      image-name: 
         required: true
         type: string
-      image_tag: 
+      image-tag: 
         required: true
         type: string
       k8s-namespace:
