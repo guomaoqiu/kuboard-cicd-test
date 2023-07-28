@@ -23,7 +23,7 @@ jobs:
         id: docker_build
         uses: mr-smithers-excellent/docker-build-push@v5
         with:
-          image: guomaoqiu/python
+          image: guomaoqiu/kuboard-cicd-test
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
