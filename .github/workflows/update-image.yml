@@ -39,6 +39,7 @@ jobs:
         run: |
             echo "Response response: ${{ steps.http-request.outputs.response }}"
             echo "Response headers: ${{ steps.http-request.outputs.headers }}"
+            
       # - name: Restart container
       #   uses: fjogeleit/http-request-action@v1
       #   with:
