@@ -28,6 +28,26 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
         # Ignore  the failure of a step and avoid terminating the job.
         continue-on-error: true
+        # https://github.com/jlumbroso/free-disk-space/issues/14
+      - name: Update Package List and Remove Dotnet
+        run: |
+          sudo apt-get update
+          sudo apt-get remove -y '^dotnet-.*'
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          # this might remove tools that are actually needed,
+          # if set to "true" but frees about 6 GB
+          tool-cache: false
+          
+          # all of these default to true, but feel free to set to
+          # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
       - name: Build and push
         id: docker_build
         uses: mr-smithers-excellent/docker-build-push@v5
@@ -37,5 +57,5 @@ jobs:
           addTimestamp: true
           username: guomaoqiu
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-      - name:
+      - name: x
         run: echo '${{ steps.docker_build.outputs.imageFullName }}:${{ steps.docker_build.outputs.tags }}'
