@@ -29,10 +29,10 @@ jobs:
         # Ignore  the failure of a step and avoid terminating the job.
         continue-on-error: true
         # https://github.com/jlumbroso/free-disk-space/issues/14
-      - name: Update Package List and Remove Dotnet
-        run: |
-          sudo apt-get update
-          sudo apt-get remove -y '^dotnet-.*'
+      # - name: Update Package List and Remove Dotnet
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get remove -y '^dotnet-.*'
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
